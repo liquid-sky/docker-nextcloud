@@ -1,4 +1,4 @@
-FROM neverhood/nginx-php:8.2
+FROM neverhood/nginx-php:8.3
 
 ARG NEXTCLOUD_VERSION=30.0.2
 ARG GPG_nextcloud="2880 6A87 8AE4 23A2 8372  792E D758 99B9 A724 937A"
@@ -31,21 +31,16 @@ RUN apk -U upgrade \
     imagemagick \
     imagemagick-libs \
     imagemagick-dev \ 
-    php8-sodium \
-    php8-sysvsem \
     libgomp \
     tzdata \
  && pecl install \
     smbclient \
     apcu \
-    imagick \
-    sodium \
     redis \
  && echo "extension=smbclient.so" > /php/conf.d/smbclient.ini \
  && echo "extension=redis.so" > /php/conf.d/redis.ini \
  && echo "extension=apcu.so" > /php/conf.d/apcu.ini \
  && echo "apc.enable_cli=1" > /php/conf.d/apc.ini \
- && echo "extension=imagick.so" > /php/conf.d/imagick.ini \
  && mkdir /nextcloud \
  && cd /tmp \
  && NEXTCLOUD_TARBALL="nextcloud-${NEXTCLOUD_VERSION}.tar.bz2" \
