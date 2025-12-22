@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ -f /apps2/notify_push/bin/x86_64/notify_push ] && /apps2/notify_push/bin/x86_64/notify_push --port 7867 /nextcloud/config/config.php
